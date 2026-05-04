@@ -65,12 +65,11 @@ If our floating point coordinate falls between $(x_0, y_0)$ and $(x_1, y_1)$, th
 The final pixel value is the sum of the 4 neighbor pixels multiplied by their respective weights.
 
 
-I used this medium article for insporation. AI was used for debugging and mathmatical verification.
+I used this medium article for insporation. AI was used for debugging and verifyig mathmatical implementaion.
 
 https://medium.com/@gausic10/creating-augmented-reality-experiences-with-opencv-a-step-by-step-guide-63f9b757707f
 
-
-
+**RESULT VIDEO IS ATTACHED IN data/video-output**
 
 
 
