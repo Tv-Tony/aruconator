@@ -30,13 +30,13 @@ The requirment was to implement a Direct Linear Transformation (DLT) algorithm f
 To project our source image into the 3D space represented by the 2D video frame, we need to find a 3×3 transformation matrix H. The matrix looks like: 
 
 $$
-\begin{bmatrix} w \cdot u \\ w \cdot v \\ w \end{bmatrix} = \begin{bmatrix} h_{11} & h_{12} & h_{13} \\ h_{21} & h_{22} & h_{23} \\ h_{31} & h_{32} & h_{33} \end{bmatrix} \begin{bmatrix} x \\ y \\ 1 \end{bmatrix}
+\begin{bmatrix} w \cdot u \\\\ w \cdot v \\\\ w \end{bmatrix} = \begin{bmatrix} h_{11} & h_{12} & h_{13} \\\\ h_{21} & h_{22} & h_{23} \\\\ h_{31} & h_{32} & h_{33} \end{bmatrix} \begin{bmatrix} x \\\\ y \\\\ 1 \end{bmatrix}
 $$
 
 By expanding this and isolating the variables, we can form a system of linear equations. For each of the 4 ArUco markers, we generate two rows in our matrix A that looks like: 
 
 $$
-A_i = \begin{bmatrix} x_i & y_i & 1 & 0 & 0 & 0 & -u_i x_i & -u_i y_i & -u_i \\ 0 & 0 & 0 & x_i & y_i & 1 & -v_i x_i & -v_i y_i & -v_i \end{bmatrix}
+A_i = \begin{bmatrix} x_i & y_i & 1 & 0 & 0 & 0 & -u_i x_i & -u_i y_i & -u_i \\\\ 0 & 0 & 0 & x_i & y_i & 1 & -v_i x_i & -v_i y_i & -v_i \end{bmatrix}
 $$
 
 Stacking the equations for all 4 points gives us an 8×9 matrix A with the soloution being the last row of $(V^t)$
