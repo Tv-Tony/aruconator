@@ -9,3 +9,7 @@ wheels/
 # Virtual environments
 .venv
 .md
+
+# Ignore videos
+.mp4
+.MOV

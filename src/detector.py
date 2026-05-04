@@ -34,7 +34,7 @@ class ArucoDetector:
     def _apply_overlay(self, frame, corners, ids):
      
         if len(ids) < 4:
-            return frame  # Need at least 4 markers
+            return frame  
 
         # Get centers the 4 markers
         marker_centers = []
