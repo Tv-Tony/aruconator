@@ -48,18 +48,16 @@ def custom_warp_perspective(img, M, dsize):
 
 
 def _warp_torch(img, M, dst_w, dst_h, src_w, src_h, channels):
-    # Upload image and inverse homography to GPU
+
     img_t = torch.from_numpy(img.astype(np.float32)).to(DEVICE)  # H x W x C
     M_inv = torch.from_numpy(np.linalg.inv(M).astype(np.float32)).to(DEVICE)  # 3x3
 
-    # Build destination coordinate grid on GPU
     xs = torch.arange(dst_w, dtype=torch.float32, device=DEVICE)
     ys = torch.arange(dst_h, dtype=torch.float32, device=DEVICE)
     y, x = torch.meshgrid(ys, xs, indexing="ij")
     ones = torch.ones_like(x)
     dst_coords = torch.stack([x, y, ones], dim=0).reshape(3, -1)  # 3 x N
 
-    # Map destination -> source via inverse homography
     src_coords = M_inv @ dst_coords          # 3 x N
     src_coords = src_coords / src_coords[2]  # normalize homogeneous
 
